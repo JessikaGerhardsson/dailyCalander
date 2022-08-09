@@ -50,6 +50,8 @@ class CalendarHelper {
         return calendar.date(byAdding: .month, value: 1, to: date)!
     }
     
+    
+    
     func minusMonth(_ date: Date) -> Date {
         return calendar.date(byAdding: .month, value: -1, to: date)!
     }
@@ -109,30 +111,31 @@ class CalendarHelper {
         }
     }
     
-    func weekDayColor(date: Date) -> UIColor {
+    func weekDayColor(date: Date) -> Color {
         switch weekDay(date) {
         case 0:
-            return UIColor(Color.green)
+            return .green
         case 1:
-            return UIColor(Color.blue)
+            return .blue
         case 2:
-            return UIColor(Color.red)
+            return .red
         case 3:
-            return UIColor(Color.purple)
+            return .purple
         case 4:
-            return UIColor(Color.pink)
+            return .pink
         case 5:
-            return UIColor(Color.brown)
+            return .brown
         case 6:
-            return UIColor(Color.indigo)
+            return .indigo
         default:
-            return UIColor(Color.black)
+            return .black
         }
     }
     
     func dayColor(date: Date) -> UIColor {
         let weekDayColor = date.formatted(.dateTime.weekday())
-        switch weekDayColor {
+        let test = String(weekDayColor)
+        switch test {
         case "Mon":
             return UIColor(Color.green)
         case "Tus":
@@ -146,6 +149,50 @@ class CalendarHelper {
         case "Sat":
             return UIColor(Color.brown)
         case "Sun":
+            return UIColor(Color.indigo)
+        default:
+            return UIColor(Color.black)
+        }
+    }
+    
+//    func testdayColor(date: Date) -> UIColor {
+//        let weekDayColor = date.formatted(.dateTime.weekday())
+//        switch weekDayColor {
+//        case 0:
+//            return UIColor(Color.green)
+//        case 1:
+//            return UIColor(Color.blue)
+//        case 2:
+//            return UIColor(Color.red)
+//        case 3:
+//            return UIColor(Color.purple)
+//        case 4:
+//            return UIColor(Color.pink)
+//        case 5:
+//            return UIColor(Color.brown)
+//        case 6:
+//            return UIColor(Color.indigo)
+//        default:
+//            return UIColor(Color.black)
+//        }
+//    }
+    
+    func testdayColor2(date: Date) -> UIColor {
+        let weekDayColor = date.dayNumberOfWeek()
+        switch weekDayColor {
+        case 1:
+            return UIColor(Color.green)
+        case 2:
+            return UIColor(Color.blue)
+        case 3:
+            return UIColor(Color.red)
+        case 4:
+            return UIColor(Color.purple)
+        case 5:
+            return UIColor(Color.pink)
+        case 6:
+            return UIColor(Color.brown)
+        case 7:
             return UIColor(Color.indigo)
         default:
             return UIColor(Color.black)
@@ -173,6 +220,30 @@ class CalendarHelper {
             return UIColor(Color.black)
         }
     }
+    
+    func testets2(date: Date) -> UIColor {
+        let testat = date.dayOfWeek()
+        
+        if testat == "Mån" {
+            return UIColor(Color.green)
+        } else if testat == "Tis" {
+            return UIColor(Color.blue)
+        }else if testat == "Ons" {
+            return UIColor(Color.red)
+        }else if testat == "Tor" {
+            return UIColor(Color.purple)
+        }else if testat == "Fre" {
+            return UIColor(Color.pink)
+        }else if testat == "Lör" {
+            return UIColor(Color.brown)
+        }else if testat == "Sön" {
+            return UIColor(Color.indigo)
+        }else {
+            return UIColor(Color.black)
+        }
+    }
+    
+    
     
     func addDays(date: Date, days: Int) -> Date {
         return calendar.date(byAdding: .day, value: days, to: date)!
@@ -221,5 +292,20 @@ class CalendarHelper {
 //        return calendar.date(from: components)!
 //    }
     
+}
+
+extension Date {
+    func dayNumberOfWeek() -> Int? {
+        return Calendar.current.dateComponents([.weekday], from: self).weekday
+    }
+}
+
+extension Date {
+    func dayOfWeek() -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        return dateFormatter.string(from: self).capitalized
+        // or use capitalized(with: locale) if you want
+    }
 }
 

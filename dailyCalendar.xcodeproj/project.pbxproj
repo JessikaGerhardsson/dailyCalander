@@ -14,6 +14,8 @@
 		FAA298CB289BE1EA00D2C04E /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA298CA289BE1EA00D2C04E /* CalendarHelper.swift */; };
 		FAA298CD289BE35C00D2C04E /* DateHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA298CC289BE35C00D2C04E /* DateHolder.swift */; };
 		FAA298CF289D053400D2C04E /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA298CE289D053400D2C04E /* MenuView.swift */; };
+		FAA298D328A2819B00D2C04E /* AddEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA298D228A2819B00D2C04E /* AddEvent.swift */; };
+		FAA298D528A28E1A00D2C04E /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA298D428A28E1A00D2C04E /* Event.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		FAA298CA289BE1EA00D2C04E /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		FAA298CC289BE35C00D2C04E /* DateHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHolder.swift; sourceTree = "<group>"; };
 		FAA298CE289D053400D2C04E /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		FAA298D228A2819B00D2C04E /* AddEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEvent.swift; sourceTree = "<group>"; };
+		FAA298D428A28E1A00D2C04E /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,8 @@
 				FAA298CE289D053400D2C04E /* MenuView.swift */,
 				FAA298CC289BE35C00D2C04E /* DateHolder.swift */,
 				FAA298CA289BE1EA00D2C04E /* CalendarHelper.swift */,
+				FAA298D228A2819B00D2C04E /* AddEvent.swift */,
+				FAA298D428A28E1A00D2C04E /* Event.swift */,
 				FAA298C0289B948100D2C04E /* Assets.xcassets */,
 				FAA298C2289B948100D2C04E /* Preview Content */,
 			);
@@ -146,10 +152,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAA298D328A2819B00D2C04E /* AddEvent.swift in Sources */,
 				FAA298CF289D053400D2C04E /* MenuView.swift in Sources */,
 				FAA298BF289B947F00D2C04E /* ContentView.swift in Sources */,
 				FAA298CB289BE1EA00D2C04E /* CalendarHelper.swift in Sources */,
 				FAA298BD289B947F00D2C04E /* dailyCalendarApp.swift in Sources */,
+				FAA298D528A28E1A00D2C04E /* Event.swift in Sources */,
 				FAA298CD289BE35C00D2C04E /* DateHolder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

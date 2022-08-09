@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State var goToMenuView = false
+    @State var goToAddEvent = false
     
     @EnvironmentObject var dateHolder: DateHolder
     
@@ -37,53 +38,128 @@ struct ContentView: View {
         }
     }
 
+    func hej() {
+        print(Date().dayOfWeek()!)
+    }
     
     var body: some View {
         VStack {
-            
+//            navigationTitle(CalendarHelper().weekDayAsString(date: dateHolder.date) + " " + String(CalendarHelper().dayOfMonth(dateHolder.date)) + " " + CalendarHelper().monthString(date: dateHolder.date))
             Spacer()
             //test()
             HStack {
                 Spacer()
+                Button {
+                    previousDay()
+                } label: {
+                    Image(systemName: "arrow.left")
+                        .imageScale(.large)
+                }
+                
+
                 ZStack {
                     Rectangle()
-                        //.fill(CalendarHelper().dayColor(date: dateHolder.date))
-                        //.fill(CalendarHelper().weekDayColor(date: dateHolder.date))
-                        
+                       // .fill(CalendarHelper().dayColor(date: dateHolder.date))
+                        .fill(CalendarHelper().weekDayColor(date: dateHolder.date))
+                        //.fill(CalendarHelper().testdayColor2(date: dateHolder.date))
+                        //.fill(CalendarHelper().testets2(date: dateHolder.date))
                         .frame(minWidth: 100, maxWidth: 150, minHeight: 20, maxHeight: 50)
                         .padding(1)
                     
                     Text(CalendarHelper().weekDayAsString(date: dateHolder.date) + " " + String(CalendarHelper().dayOfMonth(dateHolder.date)) + " " + CalendarHelper().monthString(date: dateHolder.date)).dayOfWeek()
                         .foregroundColor(Color.white)
                 }
+                Button {
+                    nextDay()
+                } label: {
+                    Image(systemName: "arrow.forward")
+                        .imageScale(.large)
+                }
                 Spacer()
-                NavigationLink(destination: MenuView(), isActive: $goToMenuView) {
-                    Button(action: menu)
-                    {
-                        Image(systemName: "line.3.horizontal")
-                            .imageScale(.large)
+//                NavigationLink(destination: MenuView(), isActive: $goToMenuView) {
+//                    Button(action: menu)
+//                    {
+//                        Image(systemName: "line.3.horizontal")
+//                            .imageScale(.large)
+//                    }
+//                    .padding()
+//                }
+                Menu {
+                    Button {
+                        //Kalender
+                    } label: {
+                        Text("Månad")
                     }
-                    .padding()
+                    Button {
+                        //Kalender
+                    } label: {
+                        Text("Vecka")
+                    }
+                    Button {
+                        //Kalender
+                    } label: {
+                        Text("Dag")
+                    }
+                    Button {
+                        //Kalender
+                    } label: {
+                        Text("Rutiner")
+                    }
+                    Button {
+                        //Kalender
+                    } label: {
+                        Text("Inställningar")
+                    }
+                } label: {
+                    Image(systemName: "line.3.horizontal")
+                        .imageScale(.large)
                 }
             }
             Spacer()
             ScrollView {
             LazyVStack {
                 ForEach(time, id: \.self) { count in
-                    HStack {
-                    Text(count)
-                            .padding()
-                        Spacer()
+                    LazyHStack {
+                        ForEach(eventList, id: \.self) { events in
+                            Text(count)
+                                    .padding()
+                            
+                                Spacer()
+                        }
                     }
                 }
             }
         }
+            HStack {
+                Spacer()
+                NavigationLink(destination: AddEvent(), isActive: $goToAddEvent) {
+                    Button(action: addEvent)
+                    {
+                        Image(systemName: "plus.square")
+                            .imageScale(.large)
+                    }
+                .padding()
+                }
+            }
         }
+//        .background(CalendarHelper().weekDayColor(date: dateHolder.date))
         
+    }
+    
+    func previousDay() {
+        dateHolder.date = CalendarHelper().addDays(date: dateHolder.date, days: -1)
+    }
+    
+    func nextDay() {
+        dateHolder.date = CalendarHelper().addDays(date: dateHolder.date, days: 1)
     }
     
     func menu() {
         goToMenuView = true
+    }
+    
+    func addEvent() {
+        goToAddEvent = true
     }
 }
 
