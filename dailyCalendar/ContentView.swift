@@ -47,7 +47,8 @@ struct ContentView: View {
                 Spacer()
                 ZStack {
                     Rectangle()
-                        //.fill(.indigo)
+                        //.fill(CalendarHelper().dayColor(date: dateHolder.date))
+                        //.fill(CalendarHelper().weekDayColor(date: dateHolder.date))
                         
                         .frame(minWidth: 100, maxWidth: 150, minHeight: 20, maxHeight: 50)
                         .padding(1)
