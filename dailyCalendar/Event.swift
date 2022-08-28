@@ -6,17 +6,24 @@
 //
 
 import Foundation
+import SwiftUI
 
-var eventList = [Event]()
+//var eventList = [Event]()
 
-class Event {
 
+
+class Event: ObservableObject {
+
+    //@Published var eventList = [Event]()
+    @Published var eventList = [Event]()
+    
     var id: Int!
     var name: String!
     var startDate: Date!
     var endDate: Date!
     var place: String!
-    
+    var startTime: String!
+    var endTime: String!
     
     func eventsForDate(date: Date) -> [Event] {
         var daysEvent = [Event]()
@@ -40,6 +47,12 @@ class Event {
             }
         }
         return daysEvent
+    }
+    
+    
+    func test() {
+        //var specifikEvent = [Event](Event().name)
+        
     }
     
 }

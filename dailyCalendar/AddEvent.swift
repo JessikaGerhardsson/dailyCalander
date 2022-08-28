@@ -9,6 +9,10 @@ import SwiftUI
 
 struct AddEvent: View {
     
+   // @ObservedObject var eventList = Event().eventList
+    @ObservedObject var event = Event()
+    @Environment(\.presentationMode) var presentationMode
+    
     @State var activityText = ""
     @State var placeText = ""
     @State private var date = Date()
@@ -63,16 +67,23 @@ struct AddEvent: View {
     }
     
     func saveActivity() {
+        
+        
+        
         let newEvent = Event()
-        newEvent.id = eventList.count
+        newEvent.id = Event().eventList.count
         newEvent.name = activityText
         newEvent.startDate = startDate
         newEvent.endDate = endDate
         newEvent.place = placeText
-        eventList.append(newEvent)
         
-        dump(eventList)
+        Event().eventList.append(newEvent)
+        //
+        self.presentationMode.wrappedValue.dismiss()
+        //dump(eventList)
     }
+    
+    
         
 }
 
